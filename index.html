@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Invitación de 15 años</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    background:
+        radial-gradient(circle at 50% 40%, #3d2632 0%, #171015 55%, #09070a 100%);
+    font-family:'Montserrat',sans-serif;
+    color:white;
+}
+
+/* Fondo con pequeñas luces */
+.luces{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+.luz{
+    position:absolute;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:rgba(255,255,255,.65);
+    box-shadow:0 0 15px rgba(255,220,235,.8);
+    animation:flotar 5s infinite ease-in-out;
+}
+
+.luz:nth-child(1){left:15%;top:20%;animation-delay:0s;}
+.luz:nth-child(2){left:80%;top:18%;animation-delay:1s;}
+.luz:nth-child(3){left:25%;top:75%;animation-delay:2s;}
+.luz:nth-child(4){left:72%;top:70%;animation-delay:3s;}
+.luz:nth-child(5){left:50%;top:12%;animation-delay:1.5s;}
+.luz:nth-child(6){left:90%;top:55%;animation-delay:2.5s;}
+
+@keyframes flotar{
+    0%,100%{transform:translateY(0);opacity:.25;}
+    50%{transform:translateY(-25px);opacity:1;}
+}
+
+/* Pantalla inicial */
+.portada{
+    position:fixed;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:10;
+    transition:opacity 1.2s ease, visibility 1.2s ease;
+}
+
+.portada.oculta{
+    opacity:0;
+    visibility:hidden;
+}
+
+/* Texto superior */
+.texto-superior{
+    font-family:'Cormorant Garamond',serif;
+    font-size:20px;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    margin-bottom:35px;
+    color:#f4dce6;
+}
+
+/* SOBRE */
+.sobre{
+    position:relative;
+    width:330px;
+    height:220px;
+    cursor:pointer;
+    perspective:1000px;
+    filter:drop-shadow(0 25px 35px rgba(0,0,0,.5));
+    transition:transform .4s ease;
+}
+
+.sobre:hover{
+    transform:translateY(-8px);
+}
+
+.base{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(145deg,#d8a9bb,#a96d85);
+    border-radius:5px;
+    overflow:hidden;
+}
+
+/* Laterales del sobre */
+.base::before{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:0;
+    height:0;
+    border-style:solid;
+    border-width:110px 165px 0 0;
+    border-color:#b77c94 transparent transparent transparent;
+}
+
+.base::after{
+    content:"";
+    position:absolute;
+    right:0;
+    bottom:0;
+    width:0;
+    height:0;
+    border-style:solid;
+    border-width:0 165px 110px 0;
+    border-color:transparent #9c6079 transparent transparent;
+}
+
+/* Hoja interior */
+.hoja{
+    position:absolute;
+    left:30px;
+    right:30px;
+    bottom:10px;
+    height:190px;
+    background:#fffafc;
+    border-radius:3px;
+    transition:transform .9s ease;
+    box-shadow:0 0 20px rgba(0,0,0,.12);
+}
+
+/* Tapa */
+.tapa{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:115px;
+    background:linear-gradient(145deg,#e6b8c8,#b97690);
+    clip-path:polygon(0 0,100% 0,50% 100%);
+    transform-origin:top center;
+    transition:transform 1s cubic-bezier(.4,0,.2,1);
+    z-index:5;
+}
+
+/* Sello */
+.sello{
+    position:absolute;
+    z-index:8;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:linear-gradient(145deg,#f0c9d7,#b56f89);
+    border:2px solid rgba(255,255,255,.7);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Cormorant Garamond',serif;
+    font-size:26px;
+    color:white;
+    box-shadow:0 5px 18px rgba(0,0,0,.25);
+    transition:opacity .4s ease, transform .5s ease;
+}
+
+/* Texto del sobre */
+.texto-sobre{
+    position:absolute;
+    bottom:-55px;
+    width:100%;
+    text-align:center;
+    font-size:12px;
+    letter-spacing:3px;
+    color:#f5dce5;
+    text-transform:uppercase;
+    animation:pulso 2s infinite;
+}
+
+@keyframes pulso{
+    0%,100%{opacity:.5;}
+    50%{opacity:1;}
+}
+
+/* APERTURA */
+.sobre.abierto .tapa{
+    transform:rotateX(180deg);
+    z-index:1;
+}
+
+.sobre.abierto .sello{
+    opacity:0;
+    transform:translate(-50%,-50%) scale(.5);
+}
+
+.sobre.abierto .hoja{
+    transform:translateY(-90px);
+}
+
+/* Mensaje después de abrir */
+.mensaje{
+    position:fixed;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    opacity:0;
+    visibility:hidden;
+    transform:scale(.95);
+    transition:all 1.2s ease;
+    z-index:2;
+}
+
+.mensaje.visible{
+    opacity:1;
+    visibility:visible;
+    transform:scale(1);
+}
+
+.contenido{
+    padding:30px;
+}
+
+.pequeno{
+    font-family:'Cormorant Garamond',serif;
+    font-size:24px;
+    color:#f2d3df;
+    letter-spacing:3px;
+}
+
+.numero{
+    font-family:'Cormorant Garamond',serif;
+    font-size:110px;
+    line-height:.9;
+    font-weight:500;
+    background:linear-gradient(to bottom,#fff,#e7b6c8);
+    -webkit-background-clip:text;
+    color:transparent;
+    margin:10px 0;
+}
+
+.nombre{
+    font-family:'Cormorant Garamond',serif;
+    font-size:48px;
+    letter-spacing:5px;
+}
+
+.frase{
+    margin-top:20px;
+    font-size:13px;
+    letter-spacing:2px;
+    color:#e8cbd5;
+}
+
+/* Celular */
+@media(max-width:600px){
+
+    .texto-superior{
+        font-size:15px;
+        letter-spacing:3px;
+        margin-bottom:30px;
+    }
+
+    .sobre{
+        width:290px;
+        height:195px;
+    }
+
+    .numero{
+        font-size:85px;
+    }
+
+    .nombre{
+        font-size:36px;
+        letter-spacing:3px;
+    }
+
+    .pequeno{
+        font-size:20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="luces">
+    <div class="luz"></div>
+    <div class="luz"></div>
+    <div class="luz"></div>
+    <div class="luz"></div>
+    <div class="luz"></div>
+    <div class="luz"></div>
+</div>
+
+<!-- PORTADA -->
+<div class="portada" id="portada">
+
+    <div class="texto-superior">
+        Una invitación especial
+    </div>
+
+    <div class="sobre" id="sobre">
+
+        <div class="hoja"></div>
+
+        <div class="base"></div>
+
+        <div class="tapa"></div>
+
+        <div class="sello">
+            15
+        </div>
+
+        <div class="texto-sobre">
+            Toca para abrir
+        </div>
+
+    </div>
+
+</div>
+
+<!-- MENSAJE QUE APARECE DESPUÉS -->
+<div class="mensaje" id="mensaje">
+
+    <div class="contenido">
+
+        <div class="pequeno">
+            Mis
+        </div>
+
+        <div class="numero">
+            15
+        </div>
+
+        <div class="nombre">
+            HILEANA LUCIA
+        </div>
+
+        <div class="frase">
+            Una noche mágica está por comenzar
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const sobre = document.getElementById("sobre");
+const portada = document.getElementById("portada");
+const mensaje = document.getElementById("mensaje");
+
+sobre.addEventListener("click", function(){
+
+    sobre.classList.add("abierto");
+
+    setTimeout(function(){
+        portada.classList.add("oculta");
+        mensaje.classList.add("visible");
+    }, 1100);
+
+});
+
+</script>
+
+</body>
+</html>
