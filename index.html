@@ -4,10 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Mis 15 años</title>
+<title>Hilena Lucia | Mis 15</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+/* =========================
+   GENERAL
+========================= */
 
 *{
     margin:0;
@@ -15,545 +20,630 @@
     box-sizing:border-box;
 }
 
-html,body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
+html{
+    scroll-behavior:smooth;
 }
 
 body{
     background:
-        radial-gradient(circle at 50% 35%, #0d2342 0%, #071322 35%, #020305 75%, #000000 100%);
+        radial-gradient(circle at 50% 10%, #10274d 0%, #050811 35%, #020306 75%);
+    color:#fff;
     font-family:'Montserrat',sans-serif;
-    color:#ffffff;
+    overflow-x:hidden;
 }
 
-/* =========================
-   LUCES DE FONDO
-========================= */
-
-.luces{
-    position:fixed;
-    inset:0;
-    overflow:hidden;
-    pointer-events:none;
+section{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    padding:80px 22px;
 }
 
-.luz{
-    position:absolute;
-    width:4px;
-    height:4px;
-    border-radius:50%;
-    background:#dcecff;
-    box-shadow:
-        0 0 8px #5fa9ff,
-        0 0 18px rgba(60,140,255,.7);
-    animation:flotar 5s infinite ease-in-out;
-}
-
-.luz:nth-child(1){left:12%;top:20%;animation-delay:0s;}
-.luz:nth-child(2){left:82%;top:18%;animation-delay:1s;}
-.luz:nth-child(3){left:22%;top:76%;animation-delay:2s;}
-.luz:nth-child(4){left:75%;top:70%;animation-delay:3s;}
-.luz:nth-child(5){left:50%;top:12%;animation-delay:1.5s;}
-.luz:nth-child(6){left:90%;top:55%;animation-delay:2.5s;}
-
-@keyframes flotar{
-    0%,100%{
-        transform:translateY(0);
-        opacity:.2;
-    }
-
-    50%{
-        transform:translateY(-25px);
-        opacity:1;
-    }
-}
-
-/* =========================
-   PORTADA
-========================= */
-
-.portada{
-    position:fixed;
-    inset:0;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-
-    z-index:10;
-
-    transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease;
-}
-
-.portada.oculta{
-    opacity:0;
-    visibility:hidden;
-}
-
-/* =========================
-   TEXTO SUPERIOR
-========================= */
-
-.texto-superior{
+h1,h2,h3{
     font-family:'Cormorant Garamond',serif;
-
-    font-size:22px;
-    letter-spacing:3px;
-
-    text-align:center;
-
-    margin-bottom:38px;
-
-    color:#f4f8ff;
-
-    text-shadow:
-        0 0 12px rgba(70,150,255,.35);
+    font-weight:400;
 }
 
 /* =========================
    SOBRE
 ========================= */
 
+.portada{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:25px;
+}
+
+.intro{
+    font-size:11px;
+    letter-spacing:4px;
+    color:#d9e5ff;
+    margin-bottom:35px;
+}
+
 .sobre{
     position:relative;
-
     width:330px;
     height:220px;
-
     cursor:pointer;
-
     perspective:1000px;
-
-    filter:
-        drop-shadow(0 25px 35px rgba(0,0,0,.7))
-        drop-shadow(0 0 18px rgba(17,67,120,.35));
-
-    transition:
-        transform .4s ease;
 }
 
-.sobre:hover{
-    transform:translateY(-8px);
-}
-
-/* =========================
-   BASE DEL SOBRE
-========================= */
-
-.base{
+.cuerpo{
     position:absolute;
-
     inset:0;
-
-    background:
-        linear-gradient(
-            145deg,
-            #102e52,
-            #0b203b 50%,
-            #071322
-        );
-
-    border:1px solid rgba(106,164,226,.55);
-
-    border-radius:5px;
-
-    overflow:hidden;
-
+    background:linear-gradient(145deg,#101e38,#050912);
+    border:1px solid rgba(112,163,255,.55);
     box-shadow:
-        inset 0 0 25px rgba(0,0,0,.55),
-        0 0 20px rgba(25,90,160,.18);
+        0 0 35px rgba(39,100,200,.25),
+        inset 0 0 25px rgba(70,120,220,.08);
+    border-radius:4px;
 }
-
-/* TRIÁNGULOS DEL SOBRE */
-
-.base::before{
-    content:"";
-
-    position:absolute;
-
-    left:0;
-    bottom:0;
-
-    width:0;
-    height:0;
-
-    border-style:solid;
-
-    border-width:110px 165px 0 0;
-
-    border-color:
-        #0d2949
-        transparent
-        transparent
-        transparent;
-}
-
-.base::after{
-    content:"";
-
-    position:absolute;
-
-    right:0;
-    bottom:0;
-
-    width:0;
-    height:0;
-
-    border-style:solid;
-
-    border-width:0 165px 110px 0;
-
-    border-color:
-        transparent
-        #081a30
-        transparent
-        transparent;
-}
-
-/* =========================
-   HOJA INTERIOR
-========================= */
-
-.hoja{
-    position:absolute;
-
-    left:30px;
-    right:30px;
-    bottom:10px;
-
-    height:190px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #ffffff,
-            #edf5ff
-        );
-
-    border-radius:3px;
-
-    transition:
-        transform .9s ease;
-
-    box-shadow:
-        0 0 25px rgba(0,0,0,.4);
-}
-
-/* =========================
-   TAPA DEL SOBRE
-========================= */
 
 .tapa{
     position:absolute;
-
     top:0;
     left:0;
-
     width:100%;
-    height:115px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #173e69,
-            #0d2949 55%,
-            #081b31
-        );
-
-    clip-path:
-        polygon(
-            0 0,
-            100% 0,
-            50% 100%
-        );
-
-    transform-origin:top center;
-
-    transition:
-        transform 1s cubic-bezier(.4,0,.2,1);
-
+    height:50%;
+    background:linear-gradient(145deg,#162b50,#071020);
+    clip-path:polygon(0 0,100% 0,50% 100%);
+    transform-origin:top;
+    transition:1.2s ease;
     z-index:5;
-
-    border-top:1px solid rgba(125,183,241,.5);
 }
-
-/* =========================
-   SELLO
-========================= */
 
 .sello{
     position:absolute;
-
-    z-index:8;
-
+    z-index:10;
+    width:78px;
+    height:78px;
+    border-radius:50%;
     left:50%;
     top:50%;
-
-    transform:
-        translate(-50%,-50%);
-
-    width:68px;
-    height:68px;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            #174b7d,
-            #0b2949 65%,
-            #061426
-        );
-
-    border:2px solid #91c7ff;
-
+    transform:translate(-50%,-50%);
+    background:#071020;
+    border:1px solid #759bd9;
     display:flex;
-
+    flex-direction:column;
     justify-content:center;
     align-items:center;
+    box-shadow:0 0 25px rgba(75,130,255,.35);
+    transition:.7s;
+}
 
+.sello span:first-child{
     font-family:'Cormorant Garamond',serif;
-
-    font-size:27px;
-
-    color:#ffffff;
-
-    box-shadow:
-        0 0 12px rgba(72,151,230,.65),
-        0 5px 18px rgba(0,0,0,.5);
-
-    transition:
-        opacity .4s ease,
-        transform .5s ease;
+    font-size:38px;
 }
 
-/* =========================
-   TEXTO DEL SOBRE
-========================= */
+.sello span:last-child{
+    font-size:7px;
+    letter-spacing:2px;
+}
 
-.texto-sobre{
+.abrir{
     position:absolute;
-
-    bottom:-55px;
-
+    bottom:-45px;
     width:100%;
-
-    text-align:center;
-
-    font-size:11px;
-
+    font-size:10px;
     letter-spacing:3px;
-
-    color:#bcdcff;
-
-    text-transform:uppercase;
-
-    animation:pulso 2s infinite;
+    color:#b9cfff;
 }
 
-@keyframes pulso{
+/* =========================
+   INVITACIÓN
+========================= */
 
-    0%,100%{
-        opacity:.45;
+.invitacion{
+    display:none;
+    animation:aparecer 1.5s ease;
+}
+
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:translateY(30px);
     }
-
-    50%{
+    to{
         opacity:1;
+        transform:translateY(0);
     }
 }
 
 /* =========================
-   ANIMACIÓN DE APERTURA
+   HERO
 ========================= */
 
-.sobre.abierto .tapa{
-    transform:rotateX(180deg);
-    z-index:1;
-}
-
-.sobre.abierto .sello{
-    opacity:0;
-
-    transform:
-        translate(-50%,-50%)
-        scale(.5);
-}
-
-.sobre.abierto .hoja{
-    transform:translateY(-90px);
-}
-
-/* =========================
-   MENSAJE FINAL
-========================= */
-
-.mensaje{
-    position:fixed;
-
-    inset:0;
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
+.hero{
     text-align:center;
-
-    opacity:0;
-    visibility:hidden;
-
-    transform:scale(.95);
-
-    transition:
-        all 1.2s ease;
-
-    z-index:2;
-}
-
-.mensaje.visible{
-    opacity:1;
-
-    visibility:visible;
-
-    transform:scale(1);
-}
-
-.contenido{
-    padding:30px;
+    padding-top:70px;
 }
 
 .pequeno{
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:25px;
-
-    color:#b9d9ff;
-
-    letter-spacing:4px;
-}
-
-.numero{
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:115px;
-
-    line-height:.9;
-
-    font-weight:500;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #ffffff,
-            #8fc7ff
-        );
-
-    -webkit-background-clip:text;
-
-    color:transparent;
-
-    margin:10px 0;
-
-    text-shadow:
-        0 0 25px rgba(60,140,255,.25);
-}
-
-.nombre{
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:48px;
-
+    font-size:10px;
     letter-spacing:5px;
-
-    color:#ffffff;
-
-    text-shadow:
-        0 0 15px rgba(90,160,255,.35);
+    color:#9eb9e8;
+    margin-bottom:20px;
 }
 
-.frase{
-    margin-top:20px;
+.hero h1{
+    font-size:72px;
+    line-height:.8;
+    color:#fff;
+}
 
+.hero h2{
+    margin-top:22px;
+    font-size:24px;
+    letter-spacing:5px;
+}
+
+.linea{
+    width:70px;
+    height:1px;
+    background:#668dd0;
+    margin:28px auto;
+}
+
+.fecha{
     font-size:13px;
-
-    letter-spacing:2px;
-
-    color:#c4dfff;
+    letter-spacing:3px;
 }
 
 /* =========================
-   CELULAR
+   FOTO PRINCIPAL
+========================= */
+
+.foto-principal{
+    margin-top:45px;
+    position:relative;
+}
+
+.foto-principal img{
+    width:100%;
+    max-height:600px;
+    object-fit:cover;
+    display:block;
+    border-radius:3px;
+    filter:brightness(.88);
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+
+.foto-principal::after{
+    content:"";
+    position:absolute;
+    inset:10px;
+    border:1px solid rgba(180,210,255,.3);
+    pointer-events:none;
+}
+
+/* =========================
+   FRASE
+========================= */
+
+.frase{
+    text-align:center;
+}
+
+.frase p{
+    font-family:'Cormorant Garamond',serif;
+    font-size:29px;
+    line-height:1.35;
+    color:#e8efff;
+}
+
+.frase small{
+    display:block;
+    margin-top:20px;
+    font-size:9px;
+    letter-spacing:3px;
+    color:#7894c5;
+}
+
+/* =========================
+   CONTADOR
+========================= */
+
+.contador{
+    text-align:center;
+}
+
+.contador h2{
+    font-size:35px;
+    margin-bottom:35px;
+}
+
+.reloj{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.tiempo{
+    padding:20px 5px;
+    background:rgba(12,25,48,.5);
+    border:1px solid rgba(100,140,200,.2);
+}
+
+.tiempo strong{
+    display:block;
+    font-family:'Cormorant Garamond',serif;
+    font-size:35px;
+    font-weight:400;
+}
+
+.tiempo span{
+    font-size:8px;
+    letter-spacing:2px;
+    color:#8da8d6;
+}
+
+/* =========================
+   INFORMACIÓN
+========================= */
+
+.info{
+    text-align:center;
+}
+
+.info h2{
+    font-size:38px;
+    margin-bottom:35px;
+}
+
+.dato{
+    margin:28px 0;
+}
+
+.dato .icono{
+    font-size:20px;
+    margin-bottom:8px;
+}
+
+.dato strong{
+    display:block;
+    font-family:'Cormorant Garamond',serif;
+    font-size:25px;
+    font-weight:400;
+}
+
+.dato span{
+    font-size:10px;
+    color:#9aaed0;
+    letter-spacing:1px;
+}
+
+/* =========================
+   PADRES
+========================= */
+
+.familia{
+    text-align:center;
+}
+
+.familia h2{
+    font-size:38px;
+    margin-bottom:30px;
+}
+
+.nombres{
+    font-family:'Cormorant Garamond',serif;
+    font-size:24px;
+    line-height:1.8;
+}
+
+/* =========================
+   CARRUSEL
+========================= */
+
+.galeria{
+    text-align:center;
+}
+
+.galeria h2{
+    font-size:40px;
+    margin-bottom:12px;
+}
+
+.subtitulo{
+    font-size:9px;
+    letter-spacing:3px;
+    color:#829ac4;
+    margin-bottom:35px;
+}
+
+.carousel{
+    position:relative;
+    overflow:hidden;
+    border-radius:3px;
+}
+
+.slides{
+    display:flex;
+    transition:transform .6s ease;
+}
+
+.slide{
+    min-width:100%;
+}
+
+.slide img{
+    width:100%;
+    height:430px;
+    object-fit:cover;
+    display:block;
+}
+
+.flecha{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.4);
+    background:rgba(0,0,0,.4);
+    color:#fff;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.prev{
+    left:12px;
+}
+
+.next{
+    right:12px;
+}
+
+.puntos{
+    display:flex;
+    justify-content:center;
+    gap:7px;
+    margin-top:18px;
+}
+
+.punto{
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#536887;
+}
+
+.punto.activo{
+    background:#fff;
+}
+
+/* =========================
+   VESTIMENTA
+========================= */
+
+.vestimenta{
+    text-align:center;
+}
+
+.vestimenta h2{
+    font-size:40px;
+    margin-bottom:30px;
+}
+
+.codigo{
+    text-align:left;
+    margin:25px 0;
+    padding:22px;
+    border-left:1px solid #668bc9;
+    background:rgba(8,16,31,.45);
+}
+
+.codigo h3{
+    font-size:24px;
+    margin-bottom:10px;
+}
+
+.codigo p{
+    font-size:12px;
+    line-height:1.8;
+    color:#bdc9df;
+}
+
+/* =========================
+   REGALOS
+========================= */
+
+.regalos{
+    text-align:center;
+}
+
+.regalos h2{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.regalos p{
+    font-size:12px;
+    color:#b9c7df;
+    line-height:1.8;
+}
+
+.lista-regalos{
+    margin-top:25px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.lista-regalos span{
+    border:1px solid rgba(120,160,220,.3);
+    padding:10px 15px;
+    font-size:10px;
+}
+
+/* =========================
+   MAPA
+========================= */
+
+.mapa{
+    text-align:center;
+}
+
+.mapa h2{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.boton{
+    display:inline-block;
+    margin-top:25px;
+    padding:14px 28px;
+    border:1px solid #789bd4;
+    color:#fff;
+    text-decoration:none;
+    font-size:10px;
+    letter-spacing:2px;
+    transition:.3s;
+}
+
+.boton:hover{
+    background:#789bd4;
+    color:#020306;
+}
+
+/* =========================
+   RSVP
+========================= */
+
+.rsvp{
+    text-align:center;
+    padding-bottom:100px;
+}
+
+.rsvp h2{
+    font-size:43px;
+}
+
+.rsvp p{
+    margin:18px 0;
+    font-size:11px;
+    color:#aebbd0;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+    padding:40px 20px;
+    border-top:1px solid rgba(100,130,180,.15);
+}
+
+footer strong{
+    font-family:'Cormorant Garamond',serif;
+    font-size:25px;
+}
+
+footer p{
+    margin-top:10px;
+    font-size:8px;
+    letter-spacing:3px;
+    color:#687b9c;
+}
+
+/* =========================
+   MUSICA
+========================= */
+
+.music{
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#0a1830;
+    border:1px solid #668dcc;
+    color:#fff;
+    z-index:100;
+    cursor:pointer;
+}
+
+/* =========================
+   MOVIL
 ========================= */
 
 @media(max-width:600px){
 
-    .texto-superior{
-        font-size:18px;
-        letter-spacing:2px;
-        margin-bottom:32px;
-        padding:0 25px;
+    section{
+        padding:65px 18px;
     }
 
     .sobre{
-        width:290px;
-        height:195px;
+        width:300px;
+        height:200px;
     }
 
-    .numero{
-        font-size:85px;
+    .hero h1{
+        font-size:62px;
     }
 
-    .nombre{
-        font-size:36px;
-        letter-spacing:3px;
-    }
-
-    .pequeno{
+    .hero h2{
         font-size:20px;
     }
+
+    .foto-principal img{
+        height:470px;
+    }
+
+    .slide img{
+        height:430px;
+    }
+
+    .reloj{
+        gap:6px;
+    }
+
+    .tiempo{
+        padding:15px 3px;
+    }
+
+    .tiempo strong{
+        font-size:28px;
+    }
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- LUCES -->
-<div class="luces">
+<!-- =========================
+     PORTADA / SOBRE
+========================= -->
 
-    <div class="luz"></div>
-    <div class="luz"></div>
-    <div class="luz"></div>
-    <div class="luz"></div>
-    <div class="luz"></div>
-    <div class="luz"></div>
-
-</div>
-
-<!-- PORTADA -->
 <div class="portada" id="portada">
 
-    <div class="texto-superior">
+    <div class="intro">
         ACOMPAÑAME EN ESTE DÍA INOLVIDABLE
     </div>
 
-    <div class="sobre" id="sobre">
+    <div class="sobre" onclick="abrirInvitacion()">
 
-        <div class="hoja"></div>
-
-        <div class="base"></div>
+        <div class="cuerpo"></div>
 
         <div class="tapa"></div>
 
         <div class="sello">
-            15
+            <span>15</span>
+            <span>HILENA</span>
         </div>
 
-        <div class="texto-sobre">
+        <div class="abrir">
             TOCA PARA ABRIR
         </div>
 
@@ -561,56 +651,519 @@ body{
 
 </div>
 
-<!-- MENSAJE DESPUÉS DE ABRIR -->
 
-<div class="mensaje" id="mensaje">
+<!-- =========================
+     INVITACIÓN
+========================= -->
 
-    <div class="contenido">
+<div class="invitacion" id="invitacion">
 
-        <div class="pequeno">
-            Mis
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="pequeno">
+        MIS QUINCE AÑOS
+    </div>
+
+    <h1>Hilena</h1>
+
+    <h2>Lucia Ponce</h2>
+
+    <div class="linea"></div>
+
+    <div class="fecha">
+        10 · 10 · 2026
+    </div>
+
+    <!-- FOTO PRINCIPAL -->
+    <div class="foto-principal">
+
+        <!-- FOTO DE REFERENCIA -->
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85">
+
+    </div>
+
+</section>
+
+
+<!-- FRASE -->
+
+<section class="frase">
+
+    <p>
+        “Una noche mágica está por comenzar,
+        y quiero compartirla contigo.”
+    </p>
+
+    <small>
+        TE ESPERO PARA CELEBRAR JUNTOS
+    </small>
+
+</section>
+
+
+<!-- CONTADOR -->
+
+<section class="contador">
+
+    <h2>Falta muy poco</h2>
+
+    <div class="reloj">
+
+        <div class="tiempo">
+            <strong id="dias">00</strong>
+            <span>DÍAS</span>
         </div>
 
-        <div class="numero">
-            15
+        <div class="tiempo">
+            <strong id="horas">00</strong>
+            <span>HORAS</span>
         </div>
 
-        <div class="nombre">
-            HILEANA LUCIA
+        <div class="tiempo">
+            <strong id="minutos">00</strong>
+            <span>MINUTOS</span>
         </div>
 
-        <div class="frase">
-            Una noche mágica está por comenzar
+        <div class="tiempo">
+            <strong id="segundos">00</strong>
+            <span>SEGUNDOS</span>
         </div>
 
     </div>
 
+</section>
+
+
+<!-- DATOS DEL EVENTO -->
+
+<section class="info">
+
+    <h2>La celebración</h2>
+
+    <div class="dato">
+
+        <div class="icono">◷</div>
+
+        <strong>07:00 PM</strong>
+
+        <span>SÁBADO 10 DE OCTUBRE</span>
+
+    </div>
+
+    <div class="dato">
+
+        <div class="icono">⌂</div>
+
+        <strong>Los Cantaros</strong>
+
+        <span>LUGAR DE LA CELEBRACIÓN</span>
+
+    </div>
+
+</section>
+
+
+<!-- PADRES Y PADRINOS -->
+
+<section class="familia">
+
+    <h2>Con amor</h2>
+
+    <div class="nombres">
+
+        <div>
+            <strong>Mis padres</strong>
+        </div>
+
+        <div>
+            Yessi Crispin Davila
+        </div>
+
+        <div>
+            Erick Ponce Beteta
+        </div>
+
+        <br>
+
+        <div>
+            <strong>Mis padrinos</strong>
+        </div>
+
+        <div>
+            Jorge Luico Ugarte
+        </div>
+
+        <div>
+            Elizabeth Margarita Climaco Rosales
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CARRUSEL
+========================= -->
+
+<section class="galeria">
+
+    <h2>Mis momentos</h2>
+
+    <div class="subtitulo">
+        RECUERDOS QUE QUIERO COMPARTIR CONTIGO
+    </div>
+
+    <div class="carousel">
+
+        <div class="slides" id="slides">
+
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=85">
+            </div>
+
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1000&q=85">
+            </div>
+
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=85">
+            </div>
+
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1000&q=85">
+            </div>
+
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=85">
+            </div>
+
+        </div>
+
+        <button class="flecha prev" onclick="anterior()">‹</button>
+
+        <button class="flecha next" onclick="siguiente()">›</button>
+
+    </div>
+
+    <div class="puntos">
+
+        <div class="punto activo"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+        <div class="punto"></div>
+
+    </div>
+
+</section>
+
+
+<!-- VESTIMENTA -->
+
+<section class="vestimenta">
+
+    <h2>Dress Code</h2>
+
+    <div class="codigo">
+
+        <h3>Caballeros</h3>
+
+        <p>
+            Pantalón de mezclilla (jean) en tonos negro,
+            blanco o crema, con camisa en tonos blanco
+            o negro, al estilo de los años 70.
+        </p>
+
+    </div>
+
+    <div class="codigo">
+
+        <h3>Damas</h3>
+
+        <p>
+            Falda plateada o negra, preferiblemente con
+            brillos, acompañada de blusa o polo blanco
+            o negro.
+            <br><br>
+            También puede ser pantalón negro con polera
+            o blusa blanca o negra.
+            <br><br>
+            Si eliges vestido, preferiblemente en tono negro.
+        </p>
+
+    </div>
+
+    <div class="codigo">
+
+        <h3>Tonos exclusivos</h3>
+
+        <p>
+            Evitemos los tonos azules y verdes.
+            Se recomienda seguir los tonos seleccionados
+            para mantener la armonía de la celebración.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- REGALOS -->
+
+<section class="regalos">
+
+    <h2>Un detalle para mí</h2>
+
+    <p>
+        Si deseas obsequiarme algo, estas son algunas
+        opciones que me encantan:
+    </p>
+
+    <div class="lista-regalos">
+
+        <span>Joyería</span>
+        <span>Perfume</span>
+        <span>Skin care</span>
+        <span>Cosas para el cabello</span>
+
+    </div>
+
+</section>
+
+
+<!-- UBICACIÓN -->
+
+<section class="mapa">
+
+    <h2>¿Dónde nos vemos?</h2>
+
+    <p>
+        Los Cantaros
+    </p>
+
+    <a
+        class="boton"
+        href="https://maps.app.goo.gl/7jGDHht91JZFSwoq5"
+        target="_blank">
+        VER UBICACIÓN
+    </a>
+
+</section>
+
+
+<!-- RSVP -->
+
+<section class="rsvp">
+
+    <h2>¿Nos acompañas?</h2>
+
+    <p>
+        Confirma tu asistencia.
+    </p>
+
+    <a
+        class="boton"
+        href="https://wa.me/51902750985?text=Hola%20Hilena%2C%20confirmo%20mi%20asistencia%20a%20tus%2015%20a%C3%B1os."
+        target="_blank">
+
+        CONFIRMAR ASISTENCIA
+
+    </a>
+
+</section>
+
+
+<footer>
+
+    <strong>Hilena Lucia</strong>
+
+    <p>
+        MIS 15 AÑOS · 2026
+    </p>
+
+</footer>
+
 </div>
+
+
+<!-- BOTÓN MÚSICA -->
+
+<button class="music" onclick="controlMusica()">
+    ♪
+</button>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
 <script>
 
-const sobre =
-    document.getElementById("sobre");
+/* =========================
+   ABRIR INVITACIÓN
+========================= */
 
-const portada =
-    document.getElementById("portada");
+function abrirInvitacion(){
 
-const mensaje =
-    document.getElementById("mensaje");
+    const tapa = document.querySelector('.tapa');
+    const sello = document.querySelector('.sello');
+    const portada = document.getElementById('portada');
+    const invitacion = document.getElementById('invitacion');
 
-sobre.addEventListener("click", function(){
-
-    sobre.classList.add("abierto");
+    tapa.style.transform = 'rotateX(180deg)';
+    sello.style.opacity = '0';
+    sello.style.transform = 'translate(-50%,-50%) scale(.5)';
 
     setTimeout(function(){
 
-        portada.classList.add("oculta");
+        portada.style.display = 'none';
+        invitacion.style.display = 'block';
 
-        mensaje.classList.add("visible");
+        window.scrollTo({
+            top:0,
+            behavior:'instant'
+        });
 
     },1100);
 
-});
+}
+
+
+/* =========================
+   CONTADOR
+========================= */
+
+const fechaEvento = new Date("October 10, 2026 19:00:00").getTime();
+
+function actualizarContador(){
+
+    const ahora = new Date().getTime();
+
+    const diferencia = fechaEvento - ahora;
+
+    if(diferencia <= 0){
+
+        document.getElementById("dias").innerText="00";
+        document.getElementById("horas").innerText="00";
+        document.getElementById("minutos").innerText="00";
+        document.getElementById("segundos").innerText="00";
+
+        return;
+    }
+
+    const dias = Math.floor(diferencia / (1000*60*60*24));
+
+    const horas = Math.floor(
+        (diferencia % (1000*60*60*24))
+        /(1000*60*60)
+    );
+
+    const minutos = Math.floor(
+        (diferencia % (1000*60*60))
+        /(1000*60)
+    );
+
+    const segundos = Math.floor(
+        (diferencia % (1000*60))
+        /1000
+    );
+
+    document.getElementById("dias").innerText =
+        String(dias).padStart(2,'0');
+
+    document.getElementById("horas").innerText =
+        String(horas).padStart(2,'0');
+
+    document.getElementById("minutos").innerText =
+        String(minutos).padStart(2,'0');
+
+    document.getElementById("segundos").innerText =
+        String(segundos).padStart(2,'0');
+}
+
+setInterval(actualizarContador,1000);
+
+actualizarContador();
+
+
+/* =========================
+   CARRUSEL
+========================= */
+
+let indice = 0;
+
+const slides = document.getElementById("slides");
+const puntos = document.querySelectorAll(".punto");
+
+function mostrarSlide(){
+
+    slides.style.transform =
+        "translateX(-" + (indice * 100) + "%)";
+
+    puntos.forEach(function(punto,i){
+
+        punto.classList.toggle(
+            "activo",
+            i === indice
+        );
+
+    });
+
+}
+
+function siguiente(){
+
+    indice++;
+
+    if(indice >= 5){
+        indice=0;
+    }
+
+    mostrarSlide();
+
+}
+
+function anterior(){
+
+    indice--;
+
+    if(indice < 0){
+        indice=4;
+    }
+
+    mostrarSlide();
+
+}
+
+
+/* CAMBIO AUTOMÁTICO */
+
+setInterval(function(){
+
+    siguiente();
+
+},5000);
+
+
+/* =========================
+   MUSICA
+========================= */
+
+/*
+   La música la agregaremos en la siguiente versión.
+   Así podremos colocar correctamente
+   "Do I Wanna Know" después de tocar el sobre.
+*/
+
+function controlMusica(){
+
+    alert("Aquí colocaremos el control de música 🎵");
+
+}
 
 </script>
 
