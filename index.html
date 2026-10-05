@@ -2239,7 +2239,7 @@ body::after{
     inherits:false;
     initial-value:0deg;
 }
-@supports (translate:0 0) and (rotate:0deg) and (scale:1){
+/* Compatibilidad: animaciones activas también en Safari/iOS y móviles */
 
 
 /* =====================================================
@@ -2971,6 +2971,174 @@ footer h3{
     }
 }
 
+
+/* =====================================================
+   FIX DEFINITIVO DE ANIMACIONES EN CELULARES
+   Compatible con Chrome / Safari / Android / iPhone
+===================================================== */
+
+@media (max-width:700px){
+
+    /* Evita que las animaciones queden pausadas por una clase de ahorro */
+    .revelar.mostrar .icono,
+    .revelar.mostrar .icono-camara,
+    .revelar.mostrar .icono-regalo,
+    .revelar.mostrar .dress-icon{
+        animation-play-state:running !important;
+    }
+
+    /* Fecha */
+    .revelar.mostrar .evento-card:nth-child(1) .icono{
+        animation:
+            movilIconoEntrada .8s ease-out both,
+            movilFlota 3.8s 1s ease-in-out infinite !important;
+    }
+
+    /* Reloj */
+    .revelar.mostrar .evento-card:nth-child(2) .icono{
+        animation:
+            movilIconoEntrada .8s .12s ease-out both,
+            movilLatido 2.8s 1s ease-in-out infinite !important;
+    }
+
+    /* Ubicación */
+    .revelar.mostrar .evento-card:nth-child(3) .icono{
+        animation:
+            movilIconoEntrada .8s .24s ease-out both,
+            movilPin 3s 1s ease-in-out infinite !important;
+    }
+
+    /* Cámara */
+    .revelar.mostrar .icono-camara{
+        animation:
+            movilIconoEntrada .8s .1s ease-out both,
+            movilFlota 3.4s 1s ease-in-out infinite !important;
+    }
+
+    /* Regalo */
+    .revelar.mostrar .icono-regalo{
+        animation:
+            movilIconoEntrada .8s .1s ease-out both,
+            movilRegalo 3.4s 1s ease-in-out infinite !important;
+    }
+
+    /* Ropa */
+    .revelar.mostrar .dress-icon{
+        animation:
+            movilIconoEntrada .8s .2s ease-out both,
+            movilRopa 3.5s 1s ease-in-out infinite !important;
+    }
+
+    .revelar.mostrar .dress-card:nth-child(2) .dress-icon{
+        animation-delay:.35s,1.5s !important;
+    }
+
+    /* WhatsApp */
+    .revelar.mostrar.rsvp .icono,
+    .rsvp.revelar.mostrar .icono{
+        animation:
+            movilIconoEntrada .8s .1s ease-out both,
+            movilWhatsapp 2.8s 1s ease-in-out infinite !important;
+    }
+
+    /* Estrellas */
+    .estrella-flotante,
+    .destello{
+        animation-play-state:running !important;
+    }
+
+    /* Botones */
+    .boton::after{
+        animation:movilBrillo 4s 1s infinite !important;
+    }
+
+    /* Bolas disco */
+    .disco{
+        animation:
+            movilDisco 4s ease-in-out infinite,
+            movilDiscoBrillo 3s ease-in-out infinite !important;
+    }
+
+    .disco-2{animation-delay:1s,1s !important}
+    .disco-3{animation-delay:2s,2s !important}
+    .disco-4{animation-delay:3s,3s !important}
+}
+
+@keyframes movilIconoEntrada{
+    0%{
+        opacity:0;
+        transform:translateY(22px) scale(.72);
+    }
+    70%{
+        opacity:1;
+        transform:translateY(-5px) scale(1.06);
+    }
+    100%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+@keyframes movilFlota{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-7px)}
+}
+
+@keyframes movilLatido{
+    0%,100%{transform:scale(1)}
+    45%{transform:scale(1.10)}
+    60%{transform:scale(1)}
+}
+
+@keyframes movilPin{
+    0%,100%{transform:translateY(0)}
+    18%{transform:translateY(-8px)}
+    32%{transform:translateY(0)}
+}
+
+@keyframes movilRegalo{
+    0%,100%{transform:translateY(0) rotate(0)}
+    45%{transform:translateY(-7px) rotate(-3deg)}
+    65%{transform:translateY(0) rotate(2deg)}
+}
+
+@keyframes movilRopa{
+    0%,100%{transform:rotate(-5deg)}
+    50%{transform:rotate(5deg)}
+}
+
+@keyframes movilWhatsapp{
+    0%,100%{transform:rotate(0) scale(1)}
+    20%{transform:rotate(-7deg) scale(1.04)}
+    40%{transform:rotate(6deg) scale(1.06)}
+    60%{transform:rotate(0) scale(1)}
+}
+
+@keyframes movilBrillo{
+    0%,55%{left:-120%}
+    75%{left:150%}
+    100%{left:150%}
+}
+
+@keyframes movilDisco{
+    0%,100%{transform:translateY(0) rotate(0)}
+    50%{transform:translateY(-7px) rotate(8deg)}
+}
+
+@keyframes movilDiscoBrillo{
+    0%,100%{filter:brightness(.9)}
+    50%{filter:brightness(1.35)}
+}
+
+/* Si el teléfono tiene "reducir movimiento" activado,
+   mantenemos una animación muy suave en lugar de apagarlo por completo. */
+@media (prefers-reduced-motion:reduce) and (max-width:700px){
+    .revelar.mostrar .icono,
+    .revelar.mostrar .icono-camara,
+    .revelar.mostrar .icono-regalo,
+    .revelar.mostrar .dress-icon{
+        animation-duration:3.8s !important;
+    }
 }
 
 </style>
