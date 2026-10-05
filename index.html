@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Invitación de 15 años</title>
+<title>Mis 15 años</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
@@ -23,12 +23,15 @@ html,body{
 
 body{
     background:
-        radial-gradient(circle at 50% 40%, #3d2632 0%, #171015 55%, #09070a 100%);
+        radial-gradient(circle at 50% 35%, #0d2342 0%, #071322 35%, #020305 75%, #000000 100%);
     font-family:'Montserrat',sans-serif;
-    color:white;
+    color:#ffffff;
 }
 
-/* Fondo con pequeñas luces */
+/* =========================
+   LUCES DE FONDO
+========================= */
+
 .luces{
     position:fixed;
     inset:0;
@@ -38,36 +41,53 @@ body{
 
 .luz{
     position:absolute;
-    width:5px;
-    height:5px;
+    width:4px;
+    height:4px;
     border-radius:50%;
-    background:rgba(255,255,255,.65);
-    box-shadow:0 0 15px rgba(255,220,235,.8);
+    background:#dcecff;
+    box-shadow:
+        0 0 8px #5fa9ff,
+        0 0 18px rgba(60,140,255,.7);
     animation:flotar 5s infinite ease-in-out;
 }
 
-.luz:nth-child(1){left:15%;top:20%;animation-delay:0s;}
-.luz:nth-child(2){left:80%;top:18%;animation-delay:1s;}
-.luz:nth-child(3){left:25%;top:75%;animation-delay:2s;}
-.luz:nth-child(4){left:72%;top:70%;animation-delay:3s;}
+.luz:nth-child(1){left:12%;top:20%;animation-delay:0s;}
+.luz:nth-child(2){left:82%;top:18%;animation-delay:1s;}
+.luz:nth-child(3){left:22%;top:76%;animation-delay:2s;}
+.luz:nth-child(4){left:75%;top:70%;animation-delay:3s;}
 .luz:nth-child(5){left:50%;top:12%;animation-delay:1.5s;}
 .luz:nth-child(6){left:90%;top:55%;animation-delay:2.5s;}
 
 @keyframes flotar{
-    0%,100%{transform:translateY(0);opacity:.25;}
-    50%{transform:translateY(-25px);opacity:1;}
+    0%,100%{
+        transform:translateY(0);
+        opacity:.2;
+    }
+
+    50%{
+        transform:translateY(-25px);
+        opacity:1;
+    }
 }
 
-/* Pantalla inicial */
+/* =========================
+   PORTADA
+========================= */
+
 .portada{
     position:fixed;
     inset:0;
+
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
+
     z-index:10;
-    transition:opacity 1.2s ease, visibility 1.2s ease;
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
 }
 
 .portada.oculta{
@@ -75,132 +95,282 @@ body{
     visibility:hidden;
 }
 
-/* Texto superior */
+/* =========================
+   TEXTO SUPERIOR
+========================= */
+
 .texto-superior{
     font-family:'Cormorant Garamond',serif;
-    font-size:20px;
-    letter-spacing:5px;
-    text-transform:uppercase;
-    margin-bottom:35px;
-    color:#f4dce6;
+
+    font-size:22px;
+    letter-spacing:3px;
+
+    text-align:center;
+
+    margin-bottom:38px;
+
+    color:#f4f8ff;
+
+    text-shadow:
+        0 0 12px rgba(70,150,255,.35);
 }
 
-/* SOBRE */
+/* =========================
+   SOBRE
+========================= */
+
 .sobre{
     position:relative;
+
     width:330px;
     height:220px;
+
     cursor:pointer;
+
     perspective:1000px;
-    filter:drop-shadow(0 25px 35px rgba(0,0,0,.5));
-    transition:transform .4s ease;
+
+    filter:
+        drop-shadow(0 25px 35px rgba(0,0,0,.7))
+        drop-shadow(0 0 18px rgba(17,67,120,.35));
+
+    transition:
+        transform .4s ease;
 }
 
 .sobre:hover{
     transform:translateY(-8px);
 }
 
+/* =========================
+   BASE DEL SOBRE
+========================= */
+
 .base{
     position:absolute;
+
     inset:0;
-    background:linear-gradient(145deg,#d8a9bb,#a96d85);
+
+    background:
+        linear-gradient(
+            145deg,
+            #102e52,
+            #0b203b 50%,
+            #071322
+        );
+
+    border:1px solid rgba(106,164,226,.55);
+
     border-radius:5px;
+
     overflow:hidden;
+
+    box-shadow:
+        inset 0 0 25px rgba(0,0,0,.55),
+        0 0 20px rgba(25,90,160,.18);
 }
 
-/* Laterales del sobre */
+/* TRIÁNGULOS DEL SOBRE */
+
 .base::before{
     content:"";
+
     position:absolute;
+
     left:0;
     bottom:0;
+
     width:0;
     height:0;
+
     border-style:solid;
+
     border-width:110px 165px 0 0;
-    border-color:#b77c94 transparent transparent transparent;
+
+    border-color:
+        #0d2949
+        transparent
+        transparent
+        transparent;
 }
 
 .base::after{
     content:"";
+
     position:absolute;
+
     right:0;
     bottom:0;
+
     width:0;
     height:0;
+
     border-style:solid;
+
     border-width:0 165px 110px 0;
-    border-color:transparent #9c6079 transparent transparent;
+
+    border-color:
+        transparent
+        #081a30
+        transparent
+        transparent;
 }
 
-/* Hoja interior */
+/* =========================
+   HOJA INTERIOR
+========================= */
+
 .hoja{
     position:absolute;
+
     left:30px;
     right:30px;
     bottom:10px;
+
     height:190px;
-    background:#fffafc;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #edf5ff
+        );
+
     border-radius:3px;
-    transition:transform .9s ease;
-    box-shadow:0 0 20px rgba(0,0,0,.12);
+
+    transition:
+        transform .9s ease;
+
+    box-shadow:
+        0 0 25px rgba(0,0,0,.4);
 }
 
-/* Tapa */
+/* =========================
+   TAPA DEL SOBRE
+========================= */
+
 .tapa{
     position:absolute;
+
     top:0;
     left:0;
+
     width:100%;
     height:115px;
-    background:linear-gradient(145deg,#e6b8c8,#b97690);
-    clip-path:polygon(0 0,100% 0,50% 100%);
+
+    background:
+        linear-gradient(
+            145deg,
+            #173e69,
+            #0d2949 55%,
+            #081b31
+        );
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
+
     transform-origin:top center;
-    transition:transform 1s cubic-bezier(.4,0,.2,1);
+
+    transition:
+        transform 1s cubic-bezier(.4,0,.2,1);
+
     z-index:5;
+
+    border-top:1px solid rgba(125,183,241,.5);
 }
 
-/* Sello */
+/* =========================
+   SELLO
+========================= */
+
 .sello{
     position:absolute;
+
     z-index:8;
+
     left:50%;
     top:50%;
-    transform:translate(-50%,-50%);
-    width:65px;
-    height:65px;
+
+    transform:
+        translate(-50%,-50%);
+
+    width:68px;
+    height:68px;
+
     border-radius:50%;
-    background:linear-gradient(145deg,#f0c9d7,#b56f89);
-    border:2px solid rgba(255,255,255,.7);
+
+    background:
+        radial-gradient(
+            circle,
+            #174b7d,
+            #0b2949 65%,
+            #061426
+        );
+
+    border:2px solid #91c7ff;
+
     display:flex;
+
     justify-content:center;
     align-items:center;
+
     font-family:'Cormorant Garamond',serif;
-    font-size:26px;
-    color:white;
-    box-shadow:0 5px 18px rgba(0,0,0,.25);
-    transition:opacity .4s ease, transform .5s ease;
+
+    font-size:27px;
+
+    color:#ffffff;
+
+    box-shadow:
+        0 0 12px rgba(72,151,230,.65),
+        0 5px 18px rgba(0,0,0,.5);
+
+    transition:
+        opacity .4s ease,
+        transform .5s ease;
 }
 
-/* Texto del sobre */
+/* =========================
+   TEXTO DEL SOBRE
+========================= */
+
 .texto-sobre{
     position:absolute;
+
     bottom:-55px;
+
     width:100%;
+
     text-align:center;
-    font-size:12px;
+
+    font-size:11px;
+
     letter-spacing:3px;
-    color:#f5dce5;
+
+    color:#bcdcff;
+
     text-transform:uppercase;
+
     animation:pulso 2s infinite;
 }
 
 @keyframes pulso{
-    0%,100%{opacity:.5;}
-    50%{opacity:1;}
+
+    0%,100%{
+        opacity:.45;
+    }
+
+    50%{
+        opacity:1;
+    }
 }
 
-/* APERTURA */
+/* =========================
+   ANIMACIÓN DE APERTURA
+========================= */
+
 .sobre.abierto .tapa{
     transform:rotateX(180deg);
     z-index:1;
@@ -208,31 +378,48 @@ body{
 
 .sobre.abierto .sello{
     opacity:0;
-    transform:translate(-50%,-50%) scale(.5);
+
+    transform:
+        translate(-50%,-50%)
+        scale(.5);
 }
 
 .sobre.abierto .hoja{
     transform:translateY(-90px);
 }
 
-/* Mensaje después de abrir */
+/* =========================
+   MENSAJE FINAL
+========================= */
+
 .mensaje{
     position:fixed;
+
     inset:0;
+
     display:flex;
+
     justify-content:center;
     align-items:center;
+
     text-align:center;
+
     opacity:0;
     visibility:hidden;
+
     transform:scale(.95);
-    transition:all 1.2s ease;
+
+    transition:
+        all 1.2s ease;
+
     z-index:2;
 }
 
 .mensaje.visible{
     opacity:1;
+
     visibility:visible;
+
     transform:scale(1);
 }
 
@@ -242,42 +429,74 @@ body{
 
 .pequeno{
     font-family:'Cormorant Garamond',serif;
-    font-size:24px;
-    color:#f2d3df;
-    letter-spacing:3px;
+
+    font-size:25px;
+
+    color:#b9d9ff;
+
+    letter-spacing:4px;
 }
 
 .numero{
     font-family:'Cormorant Garamond',serif;
-    font-size:110px;
+
+    font-size:115px;
+
     line-height:.9;
+
     font-weight:500;
-    background:linear-gradient(to bottom,#fff,#e7b6c8);
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #8fc7ff
+        );
+
     -webkit-background-clip:text;
+
     color:transparent;
+
     margin:10px 0;
+
+    text-shadow:
+        0 0 25px rgba(60,140,255,.25);
 }
 
 .nombre{
     font-family:'Cormorant Garamond',serif;
+
     font-size:48px;
+
     letter-spacing:5px;
+
+    color:#ffffff;
+
+    text-shadow:
+        0 0 15px rgba(90,160,255,.35);
 }
 
 .frase{
     margin-top:20px;
+
     font-size:13px;
+
     letter-spacing:2px;
-    color:#e8cbd5;
+
+    color:#c4dfff;
 }
 
-/* Celular */
+/* =========================
+   CELULAR
+========================= */
+
 @media(max-width:600px){
 
     .texto-superior{
-        font-size:15px;
-        letter-spacing:3px;
-        margin-bottom:30px;
+        font-size:18px;
+        letter-spacing:2px;
+        margin-bottom:32px;
+        padding:0 25px;
     }
 
     .sobre{
@@ -303,20 +522,23 @@ body{
 
 <body>
 
+<!-- LUCES -->
 <div class="luces">
+
     <div class="luz"></div>
     <div class="luz"></div>
     <div class="luz"></div>
     <div class="luz"></div>
     <div class="luz"></div>
     <div class="luz"></div>
+
 </div>
 
 <!-- PORTADA -->
 <div class="portada" id="portada">
 
     <div class="texto-superior">
-        Una invitación especial
+        ACOMPAÑAME EN ESTE DÍA INOLVIDABLE
     </div>
 
     <div class="sobre" id="sobre">
@@ -332,14 +554,15 @@ body{
         </div>
 
         <div class="texto-sobre">
-            Toca para abrir
+            TOCA PARA ABRIR
         </div>
 
     </div>
 
 </div>
 
-<!-- MENSAJE QUE APARECE DESPUÉS -->
+<!-- MENSAJE DESPUÉS DE ABRIR -->
+
 <div class="mensaje" id="mensaje">
 
     <div class="contenido">
@@ -366,18 +589,26 @@ body{
 
 <script>
 
-const sobre = document.getElementById("sobre");
-const portada = document.getElementById("portada");
-const mensaje = document.getElementById("mensaje");
+const sobre =
+    document.getElementById("sobre");
+
+const portada =
+    document.getElementById("portada");
+
+const mensaje =
+    document.getElementById("mensaje");
 
 sobre.addEventListener("click", function(){
 
     sobre.classList.add("abierto");
 
     setTimeout(function(){
+
         portada.classList.add("oculta");
+
         mensaje.classList.add("visible");
-    }, 1100);
+
+    },1100);
 
 });
 
