@@ -3122,6 +3122,105 @@ svg.smil .x{
 .sobre.abierto .p-der,
 .sobre.abierto .p-abajo{transition-delay:.42s;}
 
+/* ===== PASE DE INVITADO + SELECTOR DE ASISTENCIA (RSVP) ===== */
+.pase{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:7px;
+    max-width:300px;
+    margin:34px auto 8px;
+    padding:22px 20px 20px;
+    border:1px solid rgba(135,180,240,.4);
+    border-radius:10px;
+    background:linear-gradient(145deg,rgba(25,65,120,.28),rgba(4,10,21,.65));
+    box-shadow:0 10px 30px rgba(0,0,0,.3), inset 0 0 25px rgba(70,120,220,.08);
+}
+.pase::before,
+.pase::after{
+    content:"";
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:0;
+    border-left:1.5px dashed rgba(150,190,245,.4);
+}
+.pase::before{left:22%}
+.pase::after{left:78%}
+.pase-ojal{
+    position:absolute;
+    left:22%;
+    top:-9px;
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    background:var(--black2);
+    border:1px solid rgba(135,180,240,.4);
+    transform:translateX(-50%);
+}
+.pase-ojal-d{left:78%;top:auto;bottom:-9px;}
+.pase-eyebrow{
+    font-size:9px;
+    letter-spacing:3px;
+    color:#9db9e6;
+}
+.pase-titulo{
+    font-family:'Cormorant Garamond',serif;
+    font-size:21px;
+    font-weight:500;
+    letter-spacing:.5px;
+}
+.pase-sub{
+    font-size:8px;
+    letter-spacing:2px;
+    color:#adb9ce;
+}
+
+.asistentes-pregunta{
+    margin-top:26px;
+    font-size:10px;
+    letter-spacing:1.5px;
+    color:#adb9ce;
+}
+.asistentes{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    margin-top:14px;
+}
+.asistentes.shake{animation:asistShake .4s ease;}
+@keyframes asistShake{
+    0%,100%{transform:translateX(0)}
+    25%{transform:translateX(-6px)}
+    75%{transform:translateX(6px)}
+}
+.chip-asist{
+    cursor:pointer;
+    padding:12px 18px;
+    font-size:9px;
+    letter-spacing:1px;
+    color:var(--white);
+    background:rgba(8,20,40,.5);
+    border:1px solid rgba(110,155,220,.35);
+    border-radius:30px;
+    transition:.3s;
+}
+.chip-asist:hover{
+    border-color:rgba(160,205,255,.7);
+    transform:translateY(-3px);
+}
+.chip-asist.activo{
+    background:linear-gradient(135deg,rgba(78,130,201,.55),rgba(16,43,80,.85));
+    border-color:#a8c9f5;
+    box-shadow:0 0 18px rgba(90,150,240,.35);
+}
+.boton-deshabilitado{
+    opacity:.4;
+    filter:grayscale(.4);
+}
+
 /* en pantallas grandes, el sobre se ve como una tarjeta centrada
    (así no se recorta ni se ve gigante/acercado) */
 @media(min-width:701px){
@@ -3339,9 +3438,9 @@ svg.smil .x{
             </small>
 
             <p>
-                Jorge Luico Ugarte
+                Jorge Luis Ugarte Castro
                 <br>
-                Elizabeth Margarita Climaco Rosales
+                Elizabeth margarita climaco rosales
             </p>
 
         </div>
@@ -3643,10 +3742,7 @@ svg.smil .x{
 
             <p>
 
-                ¡Chicas, saquen su mejor estilo un estilo disco, brillante y lleno de personalidad.
-
-                <br><br>
-
+                ¡Chicas, saquen su mejor estilo disco, 
                 brillante y lleno de personalidad.
 
             </p>
@@ -3786,12 +3882,33 @@ svg.smil .x{
     </p>
 
 
+    <div class="pase">
+        <span class="pase-ojal"></span>
+        <span class="pase-eyebrow">TU PASE</span>
+        <strong class="pase-titulo">VÁLIDO PARA 2 PERSONAS</strong>
+        <span class="pase-sub">TITULAR&nbsp;+&nbsp;1&nbsp;ACOMPAÑANTE</span>
+        <span class="pase-ojal pase-ojal-d"></span>
+    </div>
+
+    <p class="asistentes-pregunta">¿Con quién asistirás?</p>
+
+    <div class="asistentes" id="asistentes">
+        <button type="button" class="chip-asist" onclick="elegirAsistencia('solo',this)">
+            VOY SOLO(A)
+        </button>
+        <button type="button" class="chip-asist" onclick="elegirAsistencia('acompanante',this)">
+            VOY CON 1 ACOMPAÑANTE
+        </button>
+    </div>
+
     <!-- CAMBIAR NUMERO AQUI -->
 
     <a
+        id="btnConfirmar"
         href="https://wa.me/51902735925?text=Hola%20Hileana%2C%20confirmo%20mi%20asistencia%20a%20tus%2015%20a%C3%B1os."
         target="_blank"
-        class="boton">
+        class="boton boton-deshabilitado"
+        onclick="return enviarConfirmacion(event)">
 
         CONFIRMAR ASISTENCIA
 
@@ -3859,6 +3976,55 @@ svg.smil .x{
 /* =====================================================
    ABRIR INVITACION
 ===================================================== */
+
+/* =====================================================
+   RSVP: VOY SOLO(A) / VOY CON ACOMPAÑANTE
+===================================================== */
+let asistenciaSeleccionada=null;
+
+function elegirAsistencia(valor,boton){
+
+    asistenciaSeleccionada=valor;
+
+    document.querySelectorAll(".chip-asist").forEach(function(c){
+        c.classList.remove("activo");
+    });
+    boton.classList.add("activo");
+
+    document.getElementById("btnConfirmar")
+        .classList.remove("boton-deshabilitado");
+}
+
+function enviarConfirmacion(e){
+
+    const btn=document.getElementById("btnConfirmar");
+
+    if(!asistenciaSeleccionada){
+
+        e.preventDefault();
+
+        const cont=document.getElementById("asistentes");
+        cont.classList.remove("shake");
+        void cont.offsetWidth;
+        cont.classList.add("shake");
+
+        return false;
+    }
+
+    const detalle=
+        asistenciaSeleccionada==="solo"
+            ? "Asistiré yo solo(a)."
+            : "Asistiré con 1 acompañante.";
+
+    const texto=encodeURIComponent(
+        "Hola Hileana, confirmo mi asistencia a tus 15 años. "+detalle
+    );
+
+    btn.href="https://wa.me/51902735925?text="+texto;
+
+    return true;
+}
+
 
 let musicaActiva=false;
 
