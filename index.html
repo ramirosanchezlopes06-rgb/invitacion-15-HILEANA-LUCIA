@@ -943,7 +943,8 @@ body::before{
 
     min-width:100%;
 
-    padding:4px;
+    padding:0;
+    box-sizing:border-box;
 }
 
 .slide img{
@@ -3968,7 +3969,7 @@ function siguiente(){
 
     indice++;
 
-    if(indice>=5){
+    if(indice>=3){
         indice=0;
     }
 
@@ -3982,7 +3983,7 @@ function anterior(){
     indice--;
 
     if(indice<0){
-        indice=4;
+        indice=2;
     }
 
     mostrarSlide();
