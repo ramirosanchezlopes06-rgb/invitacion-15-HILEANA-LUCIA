@@ -3151,7 +3151,7 @@ svg.smil .x{
     <div class="foto-principal">
 
         <img
-            src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=90"
+            src="foto-principal.jpg"
             alt="Foto principal">
 
         <div class="disco disco-1"></div>
@@ -3478,7 +3478,7 @@ svg.smil .x{
             <div class="slide">
 
                 <img
-                    src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=90"
+                    src="foto1.jpg"
                     alt="Foto 1">
 
             </div>
@@ -3487,7 +3487,7 @@ svg.smil .x{
             <div class="slide">
 
                 <img
-                    src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1000&q=90"
+                    src="foto2.jpg"
                     alt="Foto 2">
 
             </div>
@@ -3496,30 +3496,11 @@ svg.smil .x{
             <div class="slide">
 
                 <img
-                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=90"
+                    src="foto3.jpg"
                     alt="Foto 3">
 
             </div>
-
-
-            <div class="slide">
-
-                <img
-                    src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=90"
-                    alt="Foto 4">
-
-            </div>
-
-
-            <div class="slide">
-
-                <img
-                    src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=90"
-                    alt="Foto 5">
-
-            </div>
-
-        </div>
+</div>
 
 
         <button
@@ -3541,8 +3522,6 @@ svg.smil .x{
     <div class="indicadores">
 
         <span class="indicador activo"></span>
-        <span class="indicador"></span>
-        <span class="indicador"></span>
         <span class="indicador"></span>
         <span class="indicador"></span>
 
@@ -4019,7 +3998,7 @@ function siguiente(){
 
     indice++;
 
-    if(indice>=5){
+    if(indice>=3){
         indice=0;
     }
 
@@ -4033,7 +4012,7 @@ function anterior(){
     indice--;
 
     if(indice<0){
-        indice=4;
+        indice=2;
     }
 
     mostrarSlide();
