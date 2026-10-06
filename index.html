@@ -3095,7 +3095,7 @@ svg.smil .x{
 .p-izq{clip-path:polygon(0 0,11.4% 0,49.3% 46.4%,0 98.9%);z-index:1;}
 .p-abajo{clip-path:polygon(49.3% 46.4%,100% 98.5%,100% 100%,0 100%,0 98.9%);z-index:2;}
 
-.sobre.abierto .p-arriba{transform:rotateX(180deg);opacity:0;transition-duration:1.1s;}
+.sobre.abierto .p-arriba{transform:translateY(-105%) scale(.97);opacity:0;transition-duration:1.05s;}
 .sobre.abierto .p-izq{transform:translateX(-105%);transition-delay:.55s;}
 .sobre.abierto .p-der{transform:translateX(105%);transition-delay:.55s;}
 .sobre.abierto .p-abajo{transform:translateY(105%);transition-delay:.55s;}
@@ -3121,6 +3121,22 @@ svg.smil .x{
 .sobre.abierto .p-izq,
 .sobre.abierto .p-der,
 .sobre.abierto .p-abajo{transition-delay:.42s;}
+
+/* en pantallas grandes, el sobre se ve como una tarjeta centrada
+   (así no se recorta ni se ve gigante/acercado) */
+@media(min-width:701px){
+    .stage{
+        width:min(58dvh,420px);
+        height:auto;
+        aspect-ratio:941/1672;
+        border-radius:6px;
+        overflow:hidden;
+        box-shadow:
+            0 30px 90px rgba(0,0,0,.55),
+            0 0 0 1px rgba(170,200,245,.18);
+    }
+    .abrir{bottom:calc(50% - min(29dvh,210px) - 54px);}
+}
 
 .intro{
     position:absolute;top:9%;left:0;width:100%;z-index:10;margin:0;
@@ -3592,14 +3608,11 @@ svg.smil .x{
 
             <p>
 
-                Pantalón de mezclilla (jean)
-                en tonos negro, blanco o crema,
-                con camisa blanca o negra.
+                Inspirado en el glamour y la energía
 
                 <br><br>
 
-                Inspirado en el estilo
-                disco de los años 70.
+                de los años 70 y 80.
 
             </p>
 
@@ -3630,21 +3643,11 @@ svg.smil .x{
 
             <p>
 
-                Falda plateada o negra,
-                preferiblemente con brillos,
-                acompañada de blusa o polo
-                blanco o negro.
+                ¡Chicas, saquen su mejor estilo un estilo disco, brillante y lleno de personalidad.
 
                 <br><br>
 
-                También pantalón negro
-                con blusa o polera blanca
-                o negra.
-
-                <br><br>
-
-                Si eliges vestido,
-                preferiblemente negro.
+                brillante y lleno de personalidad.
 
             </p>
 
